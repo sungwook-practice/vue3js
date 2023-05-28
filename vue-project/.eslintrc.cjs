@@ -10,5 +10,16 @@ module.exports = {
   ],
   parserOptions: {
     ecmaVersion: 'latest'
+  },
+  "rules": {
+    "prettier/prettier": {
+      singleQuote: true,
+      useTabs: true,
+      tabWidth: 2,
+      trailingComma: 'all',
+      printWidth: 80,
+      bracketSpacing: true,
+      arrowParens: 'avoid'
+    }
   }
 }
