@@ -1,5 +1,5 @@
 <template>
-   <!-- example1 -->
+  <!-- example1 -->
   <p>
     <div>{{ counter }}</div>
     <div>{{ message }}</div>
@@ -20,6 +20,19 @@
   <p>
     <div :class="{ active: isActive}">active 테스트</div>
     <button @click="toggleActvie">active On/Off</button>
+  </p>
+
+  <!-- example4 -->
+  <br/>
+
+  <p>
+    <h2 v-if="character === 'A'">A입니다</h2>
+    <h2 v-else-if="character === 'B'">B입니다</h2>
+    <h2 v-else-if="character === 'C'">C입니다</h2>
+
+    <button v-on:click="character = 'A'">A로변경</button>
+    <button v-on:click="character = 'B'">B로변경</button>
+    <button v-on:click="character = 'C'">C로변경</button>
   </p>
 </template>
 
@@ -46,11 +59,16 @@ export default {
       }
     })
 
-     // example3
+    // example3
     let isActive = ref(true);
     const toggleActvie = () => {
       isActive.value = !isActive.value
     }
+
+    // example4
+    const character = ref('C')
+
+
 
     return {
       counter,
@@ -59,7 +77,8 @@ export default {
       teacher,
       hasLecture,
       isActive,
-      toggleActvie
+      toggleActvie,
+      character
     }
   }
 }
