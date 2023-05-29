@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
 
 export default {
 	setup() {
@@ -122,6 +122,19 @@ export default {
 		const checkboxValue = ref(true)
 		const radioValue = ref('O')
 
+		// example8 - watch(깊은 감시자 - 모든 속성을 감시)
+		const obj = reactive({
+			count: 0,
+		})
+		// obj.count를 감지하기 위해 getter정의
+		watch(
+			() => obj.count,
+			(newValue, oldValue) => {
+				console.log('newValue', newValue)
+				console.log('oldValue', oldValue)
+			},
+		)
+
 		return {
 			counter,
 			message,
@@ -136,6 +149,7 @@ export default {
 			vmodel,
 			checkboxValue,
 			radioValue,
+			obj,
 		}
 	},
 }
