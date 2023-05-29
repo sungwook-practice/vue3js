@@ -44,6 +44,31 @@
 	<div>
 		<button @click="printEventInfo('Hello Vue3', $event)">이벤트출력</button>
 	</div>
+
+	<!-- example7 -->
+	<div>
+		<!-- lazy -->
+		<input type="text" v-model.lazy="vmodel" />
+		<!-- <input type="text" @input="vmodel" /> -->
+		<div>{{ vmodel }}</div>
+
+		<div>
+			<label for="checkbox">{{ checkboxValue }}</label>
+			<input type="checkbox" id="checkbox" v-model="checkboxValue" />
+		</div>
+
+		<div>
+			<label>
+				<input type="radio" name="type" value="0" v-model="radioValue" />
+				O형
+			</label>
+			<label>
+				<input type="radio" name="type" value="B" v-model="radioValue" />
+				B형
+			</label>
+			<div>혈액형: {{ radioValue }}형</div>
+		</div>
+	</div>
 </template>
 
 <script>
@@ -92,6 +117,11 @@ export default {
 			console.log('event.target.tagName: ', event.target.tagName)
 		}
 
+		// example7
+		const vmodel = ref('null')
+		const checkboxValue = ref(true)
+		const radioValue = ref('O')
+
 		return {
 			counter,
 			message,
@@ -103,6 +133,9 @@ export default {
 			character,
 			languages,
 			printEventInfo,
+			vmodel,
+			checkboxValue,
+			radioValue,
 		}
 	},
 }
