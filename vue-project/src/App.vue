@@ -29,7 +29,7 @@
 		<button v-on:click="character = 'C'">C로변경</button>
 	</div>
 
-	<!-- example4 -->
+	<!-- example5 -->
 	<div>
 		<ul>
 			<template v-for="language in languages" :key="language.id">
@@ -38,6 +38,11 @@
 				</li>
 			</template>
 		</ul>
+	</div>
+
+	<!-- example6 -->
+	<div>
+		<button @click="printEventInfo('Hello Vue3', $event)">이벤트출력</button>
 	</div>
 </template>
 
@@ -80,6 +85,13 @@ export default {
 			{ id: 3, message: 'css' },
 		])
 
+		// example6
+		const printEventInfo = (message, event) => {
+			console.log('messag: ', message)
+			console.log('event.target: ', event.target)
+			console.log('event.target.tagName: ', event.target.tagName)
+		}
+
 		return {
 			counter,
 			message,
@@ -90,6 +102,7 @@ export default {
 			toggleActvie,
 			character,
 			languages,
+			printEventInfo,
 		}
 	},
 }
